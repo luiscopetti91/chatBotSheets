@@ -10,7 +10,7 @@ const { chat } = require("./chatgpt")
 const flowGPT = addKeyword(EVENTS.WELCOME)
     .addAction(async (ctx, ctxFn) => {
         const gastos = await readSheet("A1:C10")
-        const prompt = "Sos un asistente "
+        const prompt = "Sos un asistente para organizar pacientes con sus respectivos datos y el estado de la internacion domiciliaria "
         const text = ctx.body + "\nMis gastos son: " + gastos
         const response = await chat(prompt, text)
         await ctxFn.flowDynamic(response)
